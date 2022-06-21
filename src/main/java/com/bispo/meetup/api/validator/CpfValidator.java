@@ -34,12 +34,19 @@ public class CpfValidator implements ConstraintValidator<Cpf, String> {
     }
 
     private boolean isCpfNumeroIgual(String cpfNro) {
-        for (int i = 0; i <= 9; i++) {
-            if (cpfNro.equals(String.valueOf(i).repeat(11))) {
+        for (int i=0; i<=9; i++) {
+            if (cpfNro.equals(repeat(i, 11))) {
                 return true;
             }
         }
         return false;
     }
 
+    private static String repeat(int vlr, int nro) {
+    	StringBuilder ret = new StringBuilder();
+    	for ( int i=1; i<=nro; i++ )
+    		ret.append(vlr);
+    	return ret.toString();
+    }
+    
 }
