@@ -52,6 +52,11 @@ public class PessoaService {
 		this.pessoaRepository.delete(pDeleta);
 	}
 
+	public Pessoa buscarPessoa(String cpfP) {
+		return this.pessoaRepository.findByCpf(cpfP)
+				.orElseThrow(() -> new EntidadeNaoEncontradaException("Pessoa por CPF não localizada"));
+	}
+
 	private Pessoa findOrFail(Long id) {
 		return this.pessoaRepository.findById(id)
 				.orElseThrow(() -> new EntidadeNaoEncontradaException("Pessoa não localizada"));
