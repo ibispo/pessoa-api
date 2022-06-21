@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.bispo.meetup.domain.event.RecursoCriadoEvent;
 import com.bispo.meetup.domain.model.Pessoa;
+import com.bispo.meetup.domain.model.PessoaDTO;
 import com.bispo.meetup.domain.service.PessoaService;
 
 @RestController
@@ -48,6 +49,17 @@ public class PessoaController {
 	@GetMapping("/{id}")
 	public ResponseEntity<Pessoa> buscarPessoa(@PathVariable(name = "id") Long idP) {
 		return ResponseEntity.ok(this.pessoaService.buscarPessoa(idP));
+	}
+
+	/**
+	 * Buscar pessoa pelo CPF
+	 * 
+	 * @param cpfP
+	 * @return {@link ResponseEntity}
+	 */
+	@GetMapping("/cpf")
+	public ResponseEntity<Pessoa> buscarPessoa(@Validated @RequestBody PessoaDTO p) {
+		return ResponseEntity.ok(this.pessoaService.buscarPessoa(p.getCpf()));
 	}
 
 	/**
