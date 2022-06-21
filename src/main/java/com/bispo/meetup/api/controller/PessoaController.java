@@ -30,20 +30,33 @@ public class PessoaController {
 
 	@Autowired
 	private PessoaService pessoaService;
-	
+
 	@Autowired
 	public ApplicationEventPublisher publisher;
-	
+
 	@GetMapping
 	public List<Pessoa> listarPessoa() {
 		return this.pessoaService.listarPessoa();
 	}
-	
+
+	/**
+	 * buscar pessoa
+	 * 
+	 * @param idP
+	 * @return
+	 */
 	@GetMapping("/{id}")
 	public ResponseEntity<Pessoa> buscarPessoa(@PathVariable(name = "id") Long idP) {
-		return  ResponseEntity.ok(this.pessoaService.buscarPessoa(idP));   
+		return ResponseEntity.ok(this.pessoaService.buscarPessoa(idP));
 	}
-	
+
+	/**
+	 * Metodo que salva pessoa
+	 * 
+	 * @param pSalva
+	 * @param resp
+	 * @return {@link ResponseEntity}
+	 */
 	@PostMapping
 	public ResponseEntity<Pessoa> salvarPessoa(@Validated @RequestBody Pessoa pSalva, HttpServletResponse resp) {
 		Pessoa p = this.pessoaService.salvarPessoa(pSalva);
@@ -51,6 +64,13 @@ public class PessoaController {
 		return ResponseEntity.status(HttpStatus.CREATED).body(p);
 	}
 
+	/**
+	 * Metodo que atualiza pessoa
+	 * 
+	 * @param id
+	 * @param pessoa
+	 * @return {@link ResponseEntity}
+	 */
 	@PutMapping("/{id}")
 	public ResponseEntity<Pessoa> atualizarPessoa(@PathVariable Long id, @RequestBody Pessoa pessoa) {
 		return ResponseEntity.ok(this.pessoaService.atualizarPessoa(id, pessoa));
@@ -61,5 +81,5 @@ public class PessoaController {
 	public void apagarPessoa(@PathVariable Long id) {
 		this.pessoaService.deletarPessoa(id);
 	}
-	
+
 }
