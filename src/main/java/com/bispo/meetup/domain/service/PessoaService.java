@@ -3,6 +3,7 @@ package com.bispo.meetup.domain.service;
 import java.util.List;
 
 import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.bispo.meetup.domain.exception.EntidadeNaoEncontradaException;
@@ -12,11 +13,8 @@ import com.bispo.meetup.domain.repository.PessoaRepository;
 @Service
 public class PessoaService {
 
+	@Autowired
 	private PessoaRepository pessoaRepository;
-
-	public PessoaService(PessoaRepository pessoaRepository) {
-		this.pessoaRepository = pessoaRepository;
-	}
 
 	// GET
 	public List<Pessoa> listarPessoa() {
