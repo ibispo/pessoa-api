@@ -64,6 +64,13 @@ public class PessoaController {
 		return ResponseEntity.status(HttpStatus.CREATED).body(p);
 	}
 
+	/**
+	 * Metodo que atualiza pessoa
+	 * 
+	 * @param id
+	 * @param pessoa
+	 * @return {@link ResponseEntity}
+	 */
 	@PutMapping("/{id}")
 	public ResponseEntity<Pessoa> atualizarPessoa(@PathVariable Long id, @RequestBody Pessoa pessoa) {
 		return ResponseEntity.ok(this.pessoaService.atualizarPessoa(id, pessoa));
