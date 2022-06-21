@@ -30,20 +30,26 @@ public class PessoaController {
 
 	@Autowired
 	private PessoaService pessoaService;
-	
+
 	@Autowired
 	public ApplicationEventPublisher publisher;
-	
+
 	@GetMapping
 	public List<Pessoa> listarPessoa() {
 		return this.pessoaService.listarPessoa();
 	}
-	
+
+	/**
+	 * buscar pessoa
+	 * 
+	 * @param idP
+	 * @return
+	 */
 	@GetMapping("/{id}")
 	public ResponseEntity<Pessoa> buscarPessoa(@PathVariable(name = "id") Long idP) {
-		return  ResponseEntity.ok(this.pessoaService.buscarPessoa(idP));   
+		return ResponseEntity.ok(this.pessoaService.buscarPessoa(idP));
 	}
-	
+
 	@PostMapping
 	public ResponseEntity<Pessoa> salvarPessoa(@Validated @RequestBody Pessoa pSalva, HttpServletResponse resp) {
 		Pessoa p = this.pessoaService.salvarPessoa(pSalva);
@@ -61,5 +67,5 @@ public class PessoaController {
 	public void apagarPessoa(@PathVariable Long id) {
 		this.pessoaService.deletarPessoa(id);
 	}
-	
+
 }
