@@ -50,6 +50,13 @@ public class PessoaController {
 		return ResponseEntity.ok(this.pessoaService.buscarPessoa(idP));
 	}
 
+	/**
+	 * Metodo que salva pessoa
+	 * 
+	 * @param pSalva
+	 * @param resp
+	 * @return {@link ResponseEntity}
+	 */
 	@PostMapping
 	public ResponseEntity<Pessoa> salvarPessoa(@Validated @RequestBody Pessoa pSalva, HttpServletResponse resp) {
 		Pessoa p = this.pessoaService.salvarPessoa(pSalva);
