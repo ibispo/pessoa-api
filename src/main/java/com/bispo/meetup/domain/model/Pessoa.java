@@ -1,5 +1,6 @@
 package com.bispo.meetup.domain.model;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,6 +38,9 @@ public class Pessoa {
 	@Column(length = 20)
 	private String cpf;
 
+	@NotBlank
+	private LocalDate nascimento;
+	
 	@Valid
 	@JsonIgnoreProperties(value = "pessoa")
 	@OneToMany(mappedBy = "pessoa", cascade = CascadeType.ALL, orphanRemoval = true)
