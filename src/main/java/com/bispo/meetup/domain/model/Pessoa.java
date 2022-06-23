@@ -42,6 +42,7 @@ public class Pessoa {
 	@Column(length = 1)
 	private SexoEnum sexo;
 
+	@NotBlank
 	private LocalDate nascimento;
 
 	@Valid
