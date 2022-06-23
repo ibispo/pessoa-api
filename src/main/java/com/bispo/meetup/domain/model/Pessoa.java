@@ -28,19 +28,22 @@ public class Pessoa {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@NotBlank
 	@Column(length = 100)
 	private String nome;
-	
+
 	@NotBlank
 	@Column(length = 20)
 	private String cpf;
+
+	@NotBlank
+	@Column(length = 1)
+	private SexoEnum sexo;
 
 	@Valid
 	@JsonIgnoreProperties(value = "pessoa")
 	@OneToMany(mappedBy = "pessoa", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Contato> contatos = new ArrayList<>();
-	
-	
+
 }
