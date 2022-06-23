@@ -1,5 +1,6 @@
 package com.bispo.meetup.domain.model;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,6 +41,8 @@ public class Pessoa {
 	@NotBlank
 	@Column(length = 1)
 	private SexoEnum sexo;
+
+	private LocalDate nascimento;
 
 	@Valid
 	@JsonIgnoreProperties(value = "pessoa")
